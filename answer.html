@@ -1,0 +1,47 @@
+{% extends "layout.html" %}
+{% block title %}Answers - Machine Learning{% endblock %}
+
+
+{% block body %}
+<div class="container">
+    <form action="/ml/answer/submit" method="post">
+        <div hidden class="form-group">
+            <label for="answer_id">Id</label>
+            <input name="answer_id" type="number" value="{{question_id}}">
+        </div>
+        <div class="form-group">
+            <label for="question_answer">Type your answer</label>
+            <textarea name="question_answer" class="form-control" id="question_answer" cols="30" rows="10"></textarea>
+        </div>
+        <input class="btn btn-success container-fluid" type="submit">
+    </form>
+
+    <hr>
+
+    <div class="table-responsive my-4">  
+      <table class="table table-dark table-striped table-bordered table-hover table-sm">
+        <caption>List of Answers</caption>
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Solutions</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for data in datas|reverse %}
+            <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ data.question_answer }}</td>
+                      </tr>
+            {% endfor %}
+            
+          
+        </tbody>
+      </table>
+    </div>
+</div>
+
+{% endblock %}
+
+
+

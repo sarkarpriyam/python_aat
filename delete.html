@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="table-responsive my-4">
+        
+    <table class="table table-dark table-striped table-bordered table-hover table-sm">
+        <caption>List of questions</caption>
+        <thead class="thead-light">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Problem</th>
+        <th scope="col">Problem Description</th>
+        <th scope="col">Actions</th>
+        <th scope="col">Solution</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for data in datas|reverse %}
+                <tr>
+                    <th scope="row">{{ loop.index }}</th>
+                    <td>{{ data.question_topic }}</td>
+                    <td>{{ data.question_description }}</td>
+                     <td class="d-flex">
+                         <a aria-disabled="true" href="/edit/{{data.id}}" class="btn btn-outline-primary mx-2">Edit</a>
+                         <a aria-disabled="true" href="/delete/{{data.id}}" class="btn btn-outline-danger">Delete</a>
+                     </td>
+                    <td><a href="/ml/answer/{{data.id}}" class="btn btn-outline-success">Solution</a></td>
+                  </tr>
+        {% endfor %}
+        
+      
+    </tbody>
+</table>
+</div>
+{% endblock %}
+
+

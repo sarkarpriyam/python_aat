@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    ScholarsSphere - Forum
+{% endblock %}
+
+{% block body %}
+<div class="container mt-5">
+    <h1>Welcome
+        {{ session['name'] }}
+    </h1>
+
+    <div class="row">
+  
+      <div class="col-md-4">
+        <div class="card">
+          <img width="450px" height="300px" src="{{ url_for('static', filename='assets/img/ml.jpeg') }}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Machine Learning</h5>
+            <p class="card-text">Machine learning posts</p>
+            <a href="/ml" class="btn btn-primary">Go</a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4">
+        <div class="card">
+          <img width="450px" height="300px" src="{{ url_for('static', filename='assets/img/ise.jpeg') }}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">Information Science</h5>
+            <p class="card-text">Information Science posts</p>
+            <a href="#" class="btn btn-secondary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">Coming Soon!</a>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  </div>
+
+
+{% endblock %}
+

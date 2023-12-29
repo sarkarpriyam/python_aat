@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+{% block title %}
+    ScholarsSphere - ML posts
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h2 class="text-center my-3">What's your question</h2>
+    <form action="/ml" method="post">
+        <div class="form-group">
+            <label for="question_topic">Enter your problem topic</label>
+            <input name="question_topic" required type="text" class="form-control" id="question">
+        </div>
+        <div class="form-group">
+            <label for="question_description">Describe your problem</label>
+            <textarea name="question_description" class="form-control" id="question_description" cols="30" rows="10"></textarea>
+        </div>
+        <input class="btn btn-primary container-fluid" type="submit">
+    </form>
+
+    <div class="table-responsive my-4">
+        
+        <table class="table table-dark table-striped table-bordered table-hover table-sm">
+            <caption>List of questions</caption>
+            <thead class="thead-light">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Problem</th>
+            <th scope="col">Problem Description</th>
+            <th scope="col">Solution</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for data in datas|reverse %}
+                    <tr>
+                        <th scope="row">{{ loop.index }}</th>
+                        <td>{{ data.question_topic }}</td>
+                        <td>{{ data.question_description }}</td>
+                        <td><a href="/ml/answer/{{data.id}}" class="btn btn-outline-success">Solution</a></td>
+                      </tr>
+            {% endfor %}
+            
+          
+        </tbody>
+    </table>
+</div>
+</div>
+
+
+
+{% endblock %}
+
+
